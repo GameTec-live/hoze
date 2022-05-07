@@ -150,4 +150,3 @@ while True:
                 print(colored(255, 0, 0, "No map loaded"))
         else:
             print(colored(255, 0, 0, "Not enough arguments, expected: speed, item"))
-
