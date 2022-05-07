@@ -68,7 +68,9 @@ while True:
         print(colored(0, 255, 0, "invalidate: invalidate the map"))
         print(colored(0, 255, 0, "settime: set the time needed for each medal"))
         print(colored(0, 255, 0, "setspeed: set the speed of an item... fan, booster, etc"))
-        print(colored(0, 255, 0, "remember! Computers count from 0, not 1"))
+        print(colored(0, 255, 0, "loadlive: load live from the games folder"))
+        print(colored(0, 255, 0, "listlive: list all maps in the games folder"))
+        print(colored(230, 120, 10, "remember! Computers count from 0, not 1"))
     if command[0] == "exit":
         exit(colored(0, 255, 0, "exiting..."))
     if command[0] == "load":
@@ -152,3 +154,17 @@ while True:
                 print(colored(255, 0, 0, "No map loaded"))
         else:
             print(colored(255, 0, 0, "Not enough arguments, expected: speed, item"))
+    if command[0] == "loadlive":
+        if len(command) == 2:
+            map_file = os.getenv('APPDATA') + "\\Zeepkist\\Levels\\" + command[1].strip(".zeeplevel") + "\\" + command[1]
+            if os.path.isfile(map_file):
+                print(colored(0, 255, 0, "loading map..."))
+                world = os.getenv('APPDATA') + "\\Zeepkist\\Levels\\" + command[1].strip(".zeeplevel") + "\\" + command[1]
+            else:
+                print(colored(255, 0, 0, "map not found"))
+        else:
+            print(colored(255, 0, 0, "Map file not specified"))
+    if command[0] == "listlive":
+        print(colored(0, 255, 0, "listing maps..."))
+        for file in os.listdir(os.getenv('APPDATA') + "\\Zeepkist\\Levels\\"):
+            print(colored(0, 255, 0, file + ".zeeplevel"))
