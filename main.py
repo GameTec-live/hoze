@@ -5,8 +5,7 @@ from textlib import banner, colored
 import sys
 
 line_offset = 3
-
-
+world = ""
 def change_value(value, file, item, index):
     item = item + line_offset
     with open(file, 'r') as f:
@@ -54,6 +53,7 @@ while True:
         print(colored(0, 255, 0, "validate: validate the map"))
         print(colored(0, 255, 0, "invalidate: invalidate the map"))
         print(colored(0, 255, 0, "settime: set the time needed for each medal"))
+        print(colored(0, 255, 0, "setspeed: set the speed of an item... fan, booster, etc"))
         print(colored(0, 255, 0, "remember! Computers count from 0, not 1"))
     if command[0] == "exit":
         exit(colored(0, 255, 0, "exiting..."))
@@ -135,4 +135,19 @@ while True:
 
                 with open(world, 'w') as f:
                     f.writelines(lines)
+
+            else:
+                print(colored(255, 0, 0, "No map loaded"))
+        else:
+            print(colored(255, 0, 0, "Not enough arguments, expected: time, time, time"))
+
+    if command[0] == "setspeed":
+        if len(command) == 3:
+            if world != "":
+                print(colored(0, 255, 0, "setting speed..."))
+                change_value(command[1], world, int(command[2]), 36)
+            else:
+                print(colored(255, 0, 0, "No map loaded"))
+        else:
+            print(colored(255, 0, 0, "Not enough arguments, expected: speed, item"))
 
