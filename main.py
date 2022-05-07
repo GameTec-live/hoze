@@ -70,6 +70,7 @@ while True:
         print(colored(0, 255, 0, "setspeed: set the speed of an item... fan, booster, etc"))
         print(colored(0, 255, 0, "loadlive: load live from the games folder"))
         print(colored(0, 255, 0, "listlive: list all maps in the games folder"))
+        print(colored(0, 255, 0, "sethelp"))
         print(colored(230, 120, 10, "remember! Computers count from 0, not 1"))
     if command[0] == "exit":
         exit(colored(0, 255, 0, "exiting..."))
@@ -168,3 +169,11 @@ while True:
         print(colored(0, 255, 0, "listing maps..."))
         for file in os.listdir(os.getenv('APPDATA') + "\\Zeepkist\\Levels\\"):
             print(colored(0, 255, 0, file + ".zeeplevel"))
+
+    if command[0] == "sethelp":
+        print(colored(0, 255, 0, "set help message:"))
+        print(colored(0, 255, 0, """
+        index:    0     1  2  3  4   5   6   7       8       9       10                            11             12             13                             14                               15                              16                                                              27            28                    29                                       36
+        line:     1,    0, 0, 0, 0,  0,  0,  1,      1,      1,      0,                            5,             10,            24,                            30,                              24,                             30,                               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,            1,                    1,                     0, 0, 0, 0, 0, 0, 0,            0 
+        function: type, x, y, z, rx, ry, rz, scalex, scaley, scalez, road lower barriers material, road material, ramp material, left barrier primary material, left barrier secondary material, right barrier primary material, right barrier secondary material, u, u, u, u, u, u, u, u, u, u, road visible, left barrier visible, right barrier visible, u, u, u, u, u, u, adjustvalue, u,
+        """))
