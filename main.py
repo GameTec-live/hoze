@@ -111,9 +111,7 @@ while True:
     if command[0] == "validate":
         if world != "":
             print(colored(0, 255, 0, "validating map..."))
-
             valid_invalid(3, world, 2, 0)
-
             print(colored(0, 255, 0, "map validated"))
         else:
             print(colored(255, 0, 0, "No map loaded"))
@@ -121,9 +119,7 @@ while True:
     if command[0] == "invalidate":
         if world != "":
             print(colored(0, 255, 0, "invalidating map..."))
-
             valid_invalid("invalid track", world, 2, 0)
-
             print(colored(0, 255, 0, "map invalidated"))
 
     if command[0] == "settime":
