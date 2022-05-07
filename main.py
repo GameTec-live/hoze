@@ -19,6 +19,20 @@ def change_value(value, file, item, index):
     with open(file, 'w') as f:
         f.writelines(lines)
 
+def valid_invalid(value, file, item, index):
+    with open(file, 'r') as f:
+        lines = f.readlines()
+
+    line = lines[item]
+    array = line.split(",")
+    array[index] = str(value)
+    lines[item] = ",".join(array)
+
+    with open(file, 'w') as f:
+        f.writelines(lines)
+
+
+
 def get_line(file, item):
     item = item + line_offset
     with open(file, 'r') as f:
@@ -97,13 +111,8 @@ while True:
     if command[0] == "validate":
         if world != "":
             print(colored(0, 255, 0, "validating map..."))
-            with open(world, 'r') as f:
-                lines = f.readlines()
 
-            lines[2] = "2.406022,2.646624,2.887227,3.24813,0,90"
-
-            with open(world, 'w') as f:
-                f.writelines(lines)
+            valid_invalid(3, world, 2, 0)
 
             print(colored(0, 255, 0, "map validated"))
         else:
@@ -112,13 +121,10 @@ while True:
     if command[0] == "invalidate":
         if world != "":
             print(colored(0, 255, 0, "invalidating map..."))
-            with open(world, 'r') as f:
-                lines = f.readlines()
 
-            lines[2] = "invalid track,0,0,0,90"
+            valid_invalid("invalid track", world, 2, 0)
 
-            with open(world, 'w') as f:
-                f.writelines(lines)
+            print(colored(0, 255, 0, "map invalidated"))
 
     if command[0] == "settime":
         if len(command) == 3:
